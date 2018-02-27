@@ -2,7 +2,10 @@
   "name": "circumcenter-calculator",
   "version": "1.0.0",
   "description": "Calculate the circumcenter given 3 coordinates.",
-  "main": "src/index.js",
+  "main": "./index.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "author": "Davide Effe <utnaf.dev@gmail.com>",
   "license": "MIT",
   "private": false,

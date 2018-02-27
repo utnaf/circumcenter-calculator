@@ -1,7 +1,9 @@
+const round = require("mathjs").round;
+
 class Point {
   constructor(x, y) {
-    this.x = Math.round(x);
-    this.y = Math.round(y);
+    this.x = round(x, 3);
+    this.y = round(y, 3);
   }
 
   toString() {

@@ -1,5 +1,5 @@
 const assert = require("chai").assert;
-const circumcenterCalculator = require("../src/index.js").CircumcenterCalculator;
+const circumcenterCalculator = require("../src/CircumcenterCalculator.js").CircumcenterCalculator;
 const Point = require("../src/Point.js").Point;
 const Equation = require("../src/Equation.js").Equation;
 
@@ -89,6 +89,12 @@ describe("circumcenterCalculator", function() {
         b: new Point(1, 4),
         c: new Point(5, 4),
         expected: new Point(3, 4)
+      },
+      {
+        a: new Point(65, 31),
+        b: new Point(22, 1),
+        c: new Point(98, 3),
+        expected: new Point(60.264, -8.028)
       }
     ];
 

@@ -8,7 +8,7 @@ This package allows you to calculate the circumcenter of a triangle given 3 poin
 
 ```javascript
 const Point = require('circumcenter-calculator').Point;
-const calculator = require('circumcenter-calculator').circumcenterCalculator;
+const calculator = require('circumcenter-calculator').calculateCircumcenter;
 
 const pointA = new Point(3,2);
 const pointB = new Point(1,4);

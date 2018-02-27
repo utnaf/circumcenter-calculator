@@ -16,5 +16,9 @@
   "dependencies": {
     "linear-solve": "^1.2.1",
     "mathjs": "^4.0.0"
-  }
+  },
+  "engines" : { 
+    "node" : ">=6.*" 
+  },
+  "engineStrict": true
 }

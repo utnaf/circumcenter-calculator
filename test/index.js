@@ -95,6 +95,12 @@ describe("circumcenterCalculator", function() {
         b: new Point(22, 1),
         c: new Point(98, 3),
         expected: new Point(60.264, -8.028)
+      },
+      {
+        a: new Point(-13, -13),
+        b: new Point(13, -3),
+        c: new Point(-1, -1),
+        expected: new Point(3.75, -17.75)
       }
     ];
 

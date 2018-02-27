@@ -1,4 +1,5 @@
 const Point = require("./Point.js").Point;
+const Equation = require("./Equation.js").Equation;
 const linear = require("linear-solve");
 const inv = require("mathjs").inv;
 
@@ -17,42 +18,16 @@ class CircumcenterCalculator {
     const midPointAB = this.midPoint(a, b);
     // slope AB
     const slopeAB = this.slope(a, b);
-    const bisectorSlopeAB = this.negativeInverse(slopeAB);
-
-    let constantA = null;
-    let coeffAx = null;
-    let coeffAy = null;
-    if (bisectorSlopeAB % 1 === 0) {
-      constantA = midPointAB.x / bisectorSlopeAB + midPointAB.y;
-      coeffAx = -1 * bisectorSlopeAB;
-      coeffAy = 1;
-    } else {
-      constantA = midPointAB.x + midPointAB.y * slopeAB;
-      coeffAx = 1;
-      coeffAy = 1 * slopeAB;
-    }
+    const equationAB = this.getEquation(midPointAB, slopeAB);
 
     // find the AC midpoint
     const midPointAC = this.midPoint(a, c);
     // slope AC
     const slopeAC = this.slope(a, c);
-    const bisectorSlopeAC = this.negativeInverse(slopeAC);
+    const equationAC = this.getEquation(midPointAC, slopeAC);
 
-    let constantB = null;
-    let coeffBx = null;
-    let coeffBy = null;
-    if (bisectorSlopeAC % 1 === 0) {
-      constantB = midPointAC.x / slopeAC + midPointAC.y;
-      coeffBx = -1 * bisectorSlopeAC;
-      coeffBy = 1;
-    } else {
-      constantB = midPointAC.x + midPointAC.y * slopeAC;
-      coeffBx = 1;
-      coeffBy = 1 * slopeAC;
-    }
-
-    const constants = [constantA, constantB];
-    const coeff = [[coeffAx, coeffAy], [coeffBx, coeffBy]];
+    const constants = [equationAB.constant, equationAC.constant];
+    const coeff = [[equationAB.x, equationAB.y], [equationAC.x, equationAC.y]];
     const solved = linear.solve(coeff, constants);
 
     return new Point(solved[0], solved[1]);
@@ -71,6 +46,25 @@ class CircumcenterCalculator {
 
   negativeInverse(num) {
     return -1 * inv(num);
+  }
+
+  getEquation(midPoint, slope) {
+    const bisectorSlope = this.negativeInverse(slope);
+
+    let x = 0;
+    let y = 0;
+    let constant = 0;
+    if(slope % 1 === 0) {
+      x = slope * bisectorSlope * -1;
+      y = slope;
+      constant = ((bisectorSlope * slope * midPoint.x) + (slope * midPoint.y * -1)) * -1;
+    } else {
+      x = bisectorSlope * -1;
+      y = bisectorSlope * slope * -1;
+      constant = ((bisectorSlope * midPoint.x) + (midPoint.y * -1)) * -1;
+    }
+    
+    return new Equation(x, y, constant);
   }
 }
 

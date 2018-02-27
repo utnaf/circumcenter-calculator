@@ -1,7 +1,7 @@
 const assert = require("chai").assert;
-const circumcenterCalculator = require("../src/index.js")
-  .CircumcenterCalculator;
+const circumcenterCalculator = require("../src/index.js").CircumcenterCalculator;
 const Point = require("../src/Point.js").Point;
+const Equation = require("../src/Equation.js").Equation;
 
 describe("circumcenterCalculator", function() {
   describe("#slope", function() {
@@ -37,6 +37,42 @@ describe("circumcenterCalculator", function() {
 
       assert.instanceOf(midPoint, Point);
       assert.deepEqual(midPoint, expectedMidpoint);
+    });
+  });
+
+  describe("#getEquation", function() {
+    const assertions = [
+      {
+        midPoint: new Point(2, 3),
+        slope: -1,
+        expectedEquation: new Equation(1, -1, -1)
+      },
+      {
+        midPoint: new Point(4, 3),
+        slope: 1,
+        expectedEquation: new Equation(1, 1, 7)
+      },
+      {
+        midPoint: new Point(3, 3),
+        slope: 2,
+        expectedEquation: new Equation(1, 2, 9)
+      },
+      {
+        midPoint: new Point(4, 2),
+        slope: 0.5,
+        expectedEquation: new Equation(2, 1, 10)
+      }
+    ];
+
+    assertions.forEach(({ midPoint, slope, expectedEquation }) => {
+      describe(`When called with ${midPoint.toString()} and ${slope}`, function() {
+        it(`should return ${expectedEquation.toString()}`, function() {
+          const equation = circumcenterCalculator.getEquation(midPoint, slope);
+
+          assert.instanceOf(equation, Equation);
+          assert.deepEqual(equation, expectedEquation);
+        });
+      });
     });
   });
 

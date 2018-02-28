@@ -1,5 +1,5 @@
-const Point = require("./Point.js").Point;
-const Equation = require("./Equation.js").Equation;
+const Point = require("./Point").Point;
+const Equation = require("./Equation").Equation;
 const linear = require("linear-solve");
 const inv = require("mathjs").inv;
 
@@ -68,4 +68,4 @@ class CircumcenterCalculator {
   }
 }
 
-exports.CircumcenterCalculator = new CircumcenterCalculator();
+exports.Calculator = CircumcenterCalculator;

@@ -1,16 +1,18 @@
 const assert = require("chai").assert;
-const circumcenterCalculator = require("../src/CircumcenterCalculator.js").CircumcenterCalculator;
-const Point = require("../src/Point.js").Point;
-const Equation = require("../src/Equation.js").Equation;
+const Point = require("../src/Point").Point;
+const Equation = require("../src/Equation").Equation;
+const Calculator = require("../src/CircumcenterCalculator").Calculator;
 
-describe("circumcenterCalculator", function() {
+const calculator = new Calculator();
+
+describe("calculator", function() {
   describe("#slope", function() {
     it("should return the correct slope value when two points are given", function() {
       const a = new Point(2, 1);
       const b = new Point(4, 5);
       const expectedSlope = 2;
 
-      const slope = circumcenterCalculator.slope(a, b);
+      const slope = calculator.slope(a, b);
 
       assert.equal(slope, expectedSlope);
     });
@@ -21,7 +23,7 @@ describe("circumcenterCalculator", function() {
       const number = 2;
       const expectedNegativeInverse = -0.5;
 
-      const negativeInverse = circumcenterCalculator.negativeInverse(number);
+      const negativeInverse = calculator.negativeInverse(number);
 
       assert.equal(negativeInverse, expectedNegativeInverse);
     });
@@ -33,7 +35,7 @@ describe("circumcenterCalculator", function() {
       const b = new Point(1, 4);
       const expectedMidpoint = new Point(2, 3);
 
-      const midPoint = circumcenterCalculator.midPoint(a, b);
+      const midPoint = calculator.midPoint(a, b);
 
       assert.instanceOf(midPoint, Point);
       assert.deepEqual(midPoint, expectedMidpoint);
@@ -67,7 +69,7 @@ describe("circumcenterCalculator", function() {
     assertions.forEach(({ midPoint, slope, expectedEquation }) => {
       describe(`When called with ${midPoint.toString()} and ${slope}`, function() {
         it(`should return ${expectedEquation.toString()}`, function() {
-          const equation = circumcenterCalculator.getEquation(midPoint, slope);
+          const equation = calculator.getEquation(midPoint, slope);
 
           assert.instanceOf(equation, Equation);
           assert.deepEqual(equation, expectedEquation);
@@ -107,7 +109,7 @@ describe("circumcenterCalculator", function() {
     assertions.forEach(({ a, b, c, expected }) => {
       describe(`When called with ${a.toString()}, ${b.toString()} and ${c.toString()}`, function() {
         it(`should return ${expected.toString()}`, function() {
-          const circumcenter = circumcenterCalculator.calculate(a, b, c);
+          const circumcenter = calculator.calculate(a, b, c);
 
           assert.instanceOf(circumcenter, Point);
           assert.deepEqual(circumcenter, expected);

@@ -1,11 +1,10 @@
 const circumcenterCalculator = (function() {
-  const CircumcenterCalculator = require('./src/CircumcenterCalculator').CircumcenterCalculator;
-  const Point = require('./src/Point').Point;
+  const Calculator = require("./src/CircumcenterCalculator").Calculator;
+  const Point = require("./src/Point").Point;
 
-  exports.calculateCircumcenter = function(a, b, c) {
-    return (new CircumcenterCalculator).calculateCircumcenter(a, b, c);
-  }
-
+  exports.calculate = function(a, b, c) {
+    return (new Calculator()).calculate(a, b, c);
+  };
   exports.Point = Point;
 
   return exports;

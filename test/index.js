@@ -103,6 +103,18 @@ describe("calculator", function() {
         b: new Point(13, -3),
         c: new Point(-1, -1),
         expected: new Point(3.75, -17.75)
+      },
+      {
+        a: new Point(0, 0),
+        b: new Point(15, 0),
+        c: new Point(7.5, 7.5),
+        expected: new Point(7.5, 0)
+      },
+      {
+        a: new Point(0, 0),
+        b: new Point(0, 15),
+        c: new Point(15, 0),
+        expected: new Point(7.5, 7.5)
       }
     ];
 

@@ -25,3 +25,9 @@ console.log(cirucmcenter);
  * }
  */
 ```
+
+## Contributing
+Feel free to open PR, requesting feature via [twitter](https://twitter.com/utnaf), sending and email, or opening an issue.
+
+## License
+MIT

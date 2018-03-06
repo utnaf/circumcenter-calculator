@@ -1,8 +1,10 @@
+const round = require("mathjs").round;
+
 class Equation {
   constructor(coeffX, coeffY, constant) {
-    this.x = coeffX;
-    this.y = coeffY;
-    this.constant = constant;
+    this.x = round(coeffX, 5);
+    this.y = round(coeffY, 5);
+    this.constant = round(constant, 5);
   }
 
   toString() {

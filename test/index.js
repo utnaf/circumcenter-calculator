@@ -6,6 +6,24 @@ const Calculator = require("../src/CircumcenterCalculator").Calculator;
 const calculator = new Calculator();
 
 describe("calculator", function() {
+  describe("#findCorrectPoints", function(){
+    it("should return a correct object", function(){
+      const a = new Point(0, 0);
+      const b = new Point(15, 0);
+      const c = new Point(0, 15);
+
+      const points = calculator.findCorrectPoints(a, b, c);
+
+      const expectedPoints = {
+        main: c,
+        first: a,
+        second: b
+      };
+
+      assert.deepEqual(expectedPoints, points);
+    }); 
+  });
+
   describe("#slope", function() {
     it("should return the correct slope value when two points are given", function() {
       const a = new Point(2, 1);

@@ -1,6 +1,6 @@
 {
   "name": "circumcenter-calculator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Calculate the circumcenter given 3 coordinates.",
   "author": "Davide Effe <utnaf.dev@gmail.com>",
   "keywords": [

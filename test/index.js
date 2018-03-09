@@ -84,7 +84,7 @@ describe("calculator", function() {
       }
     ];
 
-    assertions.forEach(({ midPoint, slope, expectedEquation }) => {
+    assertions.forEach(({ midPoint: midPoint, slope: slope, expectedEquation: expectedEquation }) => {
       describe(`When called with ${midPoint.toString()} and ${slope}`, function() {
         it(`should return ${expectedEquation.toString()}`, function() {
           const equation = calculator.getEquation(midPoint, slope);
@@ -136,7 +136,7 @@ describe("calculator", function() {
       }
     ];
 
-    assertions.forEach(({ a, b, c, expected }) => {
+    assertions.forEach(({ a: a, b: b, c: c, expected: expected }) => {
       describe(`When called with ${a.toString()}, ${b.toString()} and ${c.toString()}`, function() {
         it(`should return ${expected.toString()}`, function() {
           const circumcenter = calculator.calculate(a, b, c);

@@ -1,4 +1,4 @@
-const round = require("mathjs").round;
+const round = require("./helpers").round;
 
 class Point {
   constructor(x, y) {

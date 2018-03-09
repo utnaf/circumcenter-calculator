@@ -1,7 +1,6 @@
 const Point = require("./Point").Point;
 const Equation = require("./Equation").Equation;
 const linear = require("linear-solve");
-const inv = require("mathjs").inv;
 
 class CircumcenterCalculator {
   calculate(a, b, c) {
@@ -35,11 +34,8 @@ class CircumcenterCalculator {
     try {
       solved = linear.solve(coeff, constants);
     } catch (e) {
-      console.log(coeff, constants);
       throw `Was impossible to calculate circumcenter for points ${a}, ${b} and ${c}`;
     }
-
-    console.log(coeff, constants);
 
     return new Point(solved[0], solved[1]);
   }
@@ -88,7 +84,7 @@ class CircumcenterCalculator {
       return Infinity;
     }
 
-    return -1 * inv(num);
+    return -1 / num;;
   }
 
   getEquation(midPoint, slope) {

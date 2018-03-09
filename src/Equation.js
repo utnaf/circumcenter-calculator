@@ -1,4 +1,4 @@
-const round = require("mathjs").round;
+const round = require("./helpers").round;
 
 class Equation {
   constructor(coeffX, coeffY, constant) {

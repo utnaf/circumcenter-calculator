@@ -1,18 +1,18 @@
-const assert = require("chai").assert;
-const Point = require("../src/Point").Point;
-const Equation = require("../src/Equation").Equation;
-const calculate = require("../src/calculate").calculate;
-const helpers = require("../src/helpers");
+var assert = require("chai").assert;
+var Point = require("../src/Point").Point;
+var Equation = require("../src/Equation").Equation;
+var calculate = require("../src/calculate").calculate;
+var helpers = require("../src/helpers");
 
 describe("#findCorrectPoints", function() {
   it("should return a correct object", function() {
-    const a = new Point(0, 0);
-    const b = new Point(15, 0);
-    const c = new Point(0, 15);
+    var a = new Point(0, 0);
+    var b = new Point(15, 0);
+    var c = new Point(0, 15);
 
-    const points = helpers.findCorrectPoints(a, b, c);
+    var points = helpers.findCorrectPoints(a, b, c);
 
-    const expectedPoints = {
+    var expectedPoints = {
       main: c,
       first: a,
       second: b
@@ -24,11 +24,11 @@ describe("#findCorrectPoints", function() {
 
 describe("#slope", function() {
   it("should return the correct slope value when two points are given", function() {
-    const a = new Point(2, 1);
-    const b = new Point(4, 5);
-    const expectedSlope = 2;
+    var a = new Point(2, 1);
+    var b = new Point(4, 5);
+    var expectedSlope = 2;
 
-    const slope = helpers.slope(a, b);
+    var slope = helpers.slope(a, b);
 
     assert.equal(slope, expectedSlope);
   });
@@ -36,10 +36,10 @@ describe("#slope", function() {
 
 describe("#negativeInverse", function() {
   it("should return the correct negative inverse value", function() {
-    const number = 2;
-    const expectedNegativeInverse = -0.5;
+    var number = 2;
+    var expectedNegativeInverse = -0.5;
 
-    const negativeInverse = helpers.negativeInverse(number);
+    var negativeInverse = helpers.negativeInverse(number);
 
     assert.equal(negativeInverse, expectedNegativeInverse);
   });
@@ -47,11 +47,11 @@ describe("#negativeInverse", function() {
 
 describe("#midPoint", function() {
   it("should return the correct mid point when two points are given", function() {
-    const a = new Point(3, 2);
-    const b = new Point(1, 4);
-    const expectedMidpoint = new Point(2, 3);
+    var a = new Point(3, 2);
+    var b = new Point(1, 4);
+    var expectedMidpoint = new Point(2, 3);
 
-    const midPoint = helpers.midPoint(a, b);
+    var midPoint = helpers.midPoint(a, b);
 
     assert.instanceOf(midPoint, Point);
     assert.deepEqual(midPoint, expectedMidpoint);
@@ -59,7 +59,7 @@ describe("#midPoint", function() {
 });
 
 describe("#getEquation", function() {
-  const assertions = [
+  var assertions = [
     {
       midPoint: new Point(2, 3),
       slope: -1,
@@ -83,13 +83,13 @@ describe("#getEquation", function() {
   ];
 
   assertions.forEach(function(assertion) {
-    const midPoint = assertion.midPoint;
-    const slope = assertion.slope;
-    const expectedEquation = assertion.expectedEquation;
+    var midPoint = assertion.midPoint;
+    var slope = assertion.slope;
+    var expectedEquation = assertion.expectedEquation;
 
     describe(`When called with ${midPoint.toString()} and ${slope}`, function() {
       it(`should return ${expectedEquation.toString()}`, function() {
-        const equation = helpers.getEquation(midPoint, slope);
+        var equation = helpers.getEquation(midPoint, slope);
 
         assert.instanceOf(equation, Equation);
         assert.deepEqual(equation, expectedEquation);
@@ -99,7 +99,7 @@ describe("#getEquation", function() {
 });
 
 describe("#calculate", function() {
-  const assertions = [
+  var assertions = [
     {
       a: new Point(2, 1),
       b: new Point(4, 5),
@@ -139,14 +139,14 @@ describe("#calculate", function() {
   ];
 
   assertions.forEach(function(assertion) {
-    const a = assertion.a;
-    const b = assertion.b;
-    const c = assertion.c;
-    const expected = assertion.expected;
+    var a = assertion.a;
+    var b = assertion.b;
+    var c = assertion.c;
+    var expected = assertion.expected;
 
     describe(`When called with ${a.toString()}, ${b.toString()} and ${c.toString()}`, function() {
       it(`should return ${expected.toString()}`, function() {
-        const circumcenter = calculate(a, b, c);
+        var circumcenter = calculate(a, b, c);
 
         assert.instanceOf(circumcenter, Point);
         assert.deepEqual(circumcenter, expected);

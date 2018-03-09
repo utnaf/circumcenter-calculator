@@ -1,10 +1,10 @@
-const Point = require("./Point").Point;
-const Equation = require("./Equation").Equation;
+var Point = require("./Point");
+var Equation = require("./Equation");
 
 function round(number, precision) {
-  const factor = Math.pow(10, precision);
-  const tempNumber = number * factor;
-  let roundedTempNumber = Math.round(tempNumber);
+  var factor = Math.pow(10, precision);
+  var tempNumber = number * factor;
+  var roundedTempNumber = Math.round(tempNumber);
 
   // remove signed zero
   if (roundedTempNumber === -0) {
@@ -27,8 +27,8 @@ function negativeInverse(num) {
 }
 
 function midPoint(a, b) {
-  const midX = (a.x + b.x) / 2;
-  const midY = (a.y + b.y) / 2;
+  var midX = (a.x + b.x) / 2;
+  var midY = (a.y + b.y) / 2;
 
   return new Point(midX, midY);
 }
@@ -38,16 +38,16 @@ function slope(a, b) {
 }
 
 function getEquation(midPoint, slope) {
-  let bisectorSlope = negativeInverse(slope);
+  var bisectorSlope = negativeInverse(slope);
 
   // fake eliminaiton of slope
   if (Math.abs(slope) === Infinity) {
     slope = 1;
   }
 
-  let x = 0;
-  let y = 0;
-  let constant = 0;
+  var x = 0;
+  var y = 0;
+  var constant = 0;
   if (slope % 1 === 0) {
     x = slope * bisectorSlope * -1;
     y = slope;
@@ -63,9 +63,9 @@ function getEquation(midPoint, slope) {
 }
 
 function findCorrectPoints(a, b, c) {
-  let main = a;
-  let first = b;
-  let second = c;
+  var main = a;
+  var first = b;
+  var second = c;
 
   if (a.y === b.y) {
     main = c;
@@ -86,9 +86,9 @@ function findCorrectPoints(a, b, c) {
   };
 }
 
-exports.findCorrectPoints = findCorrectPoints;
-exports.getEquation = getEquation;
-exports.slope = slope;
-exports.negativeInverse = negativeInverse;
-exports.round = round;
-exports.midPoint = midPoint;
+module.exports.findCorrectPoints = findCorrectPoints;
+module.exports.getEquation = getEquation;
+module.exports.slope = slope;
+module.exports.negativeInverse = negativeInverse;
+module.exports.round = round;
+module.exports.midPoint = midPoint;

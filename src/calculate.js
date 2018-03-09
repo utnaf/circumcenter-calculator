@@ -1,6 +1,6 @@
-const Point = require("./Point").Point;
-const linear = require("linear-solve");
-const helpers = require("./helpers");
+var Point = require("./Point").Point;
+var linear = require("linear-solve");
+var helpers = require("./helpers");
 
 function calculate(a, b, c) {
   if (!(a instanceof Point) || !(b instanceof Point) || !(c instanceof Point)) {
@@ -8,25 +8,25 @@ function calculate(a, b, c) {
     return false;
   }
 
-  const points = helpers.findCorrectPoints(a, b, c);
+  var points = helpers.findCorrectPoints(a, b, c);
 
   // find the AB midpoint
-  const midPointAB = helpers.midPoint(points.main, points.first);
+  var midPointAB = helpers.midPoint(points.main, points.first);
   // slope AB
-  const slopeAB = helpers.slope(points.main, points.first);
-  const equationAB = helpers.getEquation(midPointAB, slopeAB);
+  var slopeAB = helpers.slope(points.main, points.first);
+  var equationAB = helpers.getEquation(midPointAB, slopeAB);
 
   // find the AC midpoint
-  const midPointAC = helpers.midPoint(points.main, points.second);
+  var midPointAC = helpers.midPoint(points.main, points.second);
   // slope AC
-  const slopeAC = helpers.slope(points.main, points.second);
-  const equationAC = helpers.getEquation(midPointAC, slopeAC);
+  var slopeAC = helpers.slope(points.main, points.second);
+  var equationAC = helpers.getEquation(midPointAC, slopeAC);
 
-  const constants = [equationAB.constant, equationAC.constant];
-  const coeff = [[equationAB.x, equationAB.y], [equationAC.x, equationAC.y]];
+  var constants = [equationAB.constant, equationAC.constant];
+  var coeff = [[equationAB.x, equationAB.y], [equationAC.x, equationAC.y]];
 
   try {
-    const solved = linear.solve(coeff, constants);
+    var solved = linear.solve(coeff, constants);
   } catch (e) {
     throw `Was impossible to calculate circumcenter for points ${a}, ${b} and ${c}`;
   }
@@ -34,4 +34,4 @@ function calculate(a, b, c) {
   return new Point(solved[0], solved[1]);
 }
 
-exports.calculate = calculate;
+module.exports.calculate = calculate;

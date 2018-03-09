@@ -1,14 +1,12 @@
-const round = require("./helpers").round;
+const helpers = require("./helpers");
 
-class Point {
-  constructor(x, y) {
-    this.x = round(x, 3);
-    this.y = round(y, 3);
-  }
-
-  toString() {
-    return `${this.x}:${this.y}`;
-  }
+function Point(x, y) {
+  this.x = helpers.round(x, 3);
+  this.y = helpers.round(y, 3);
 }
+
+Point.prototype.toString = function() {
+  return `${this.x}:${this.y}`;
+};
 
 exports.Point = Point;

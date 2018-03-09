@@ -1,15 +1,13 @@
-const round = require("./helpers").round;
+const helpers = require("./helpers");
 
-class Equation {
-  constructor(coeffX, coeffY, constant) {
-    this.x = round(coeffX, 5);
-    this.y = round(coeffY, 5);
-    this.constant = round(constant, 5);
-  }
-
-  toString() {
-    return `${this.x}x ${this.y}y = ${this.constant}`;
-  }
+function Equation(coeffX, coeffY, constant) {
+  this.x = helpers.round(coeffX, 5);
+  this.y = helpers.round(coeffY, 5);
+  this.constant = helpers.round(constant, 5);
 }
+
+Equation.prototype.toString = function() {
+  return `${this.x}x ${this.y}y = ${this.constant}`;
+};
 
 exports.Equation = Equation;

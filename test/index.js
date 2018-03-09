@@ -6,8 +6,8 @@ const Calculator = require("../src/CircumcenterCalculator").Calculator;
 const calculator = new Calculator();
 
 describe("calculator", function() {
-  describe("#findCorrectPoints", function(){
-    it("should return a correct object", function(){
+  describe("#findCorrectPoints", function() {
+    it("should return a correct object", function() {
       const a = new Point(0, 0);
       const b = new Point(15, 0);
       const c = new Point(0, 15);
@@ -21,7 +21,7 @@ describe("calculator", function() {
       };
 
       assert.deepEqual(expectedPoints, points);
-    }); 
+    });
   });
 
   describe("#slope", function() {
@@ -84,7 +84,11 @@ describe("calculator", function() {
       }
     ];
 
-    assertions.forEach(({ midPoint: midPoint, slope: slope, expectedEquation: expectedEquation }) => {
+    assertions.forEach(function(assertion) {
+      const midPoint = assertion.midPoint;
+      const slope = assertion.slope;
+      const expectedEquation = assertion.expectedEquation;
+
       describe(`When called with ${midPoint.toString()} and ${slope}`, function() {
         it(`should return ${expectedEquation.toString()}`, function() {
           const equation = calculator.getEquation(midPoint, slope);
@@ -136,7 +140,12 @@ describe("calculator", function() {
       }
     ];
 
-    assertions.forEach(({ a: a, b: b, c: c, expected: expected }) => {
+    assertions.forEach(function(assertion) {
+      const a = assertion.a;
+      const b = assertion.b;
+      const c = assertion.c;
+      const expected = assertion.expected;
+
       describe(`When called with ${a.toString()}, ${b.toString()} and ${c.toString()}`, function() {
         it(`should return ${expected.toString()}`, function() {
           const circumcenter = calculator.calculate(a, b, c);

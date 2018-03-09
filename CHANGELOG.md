@@ -1,5 +1,9 @@
 # Circumcenter Calculator
 
+## 1.2.0
+
+  * removed dependancy from MathJS
+
 ## 1.1.0
 
   * fix error when trying to calculate with undefined slopes

@@ -1,6 +1,6 @@
 var calculate = (function() {
-  var calculate = require("./src/calculate");
-  var Point = require("./src/Point");
+  var calculate = require("./src/calculate").calculate;
+  var Point = require("./src/Point").Point;
 
   exports.calculate = calculate;
   exports.Point = Point;

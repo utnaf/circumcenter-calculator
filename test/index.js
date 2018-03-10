@@ -1,14 +1,14 @@
 var assert = require("chai").assert;
-var Point = require("../src/Point").Point;
+var p = require("../src/Point");
 var Equation = require("../src/Equation").Equation;
 var calculate = require("../src/calculate").calculate;
 var helpers = require("../src/helpers");
 
 describe("#findCorrectPoints", function() {
   it("should return a correct object", function() {
-    var a = new Point(0, 0);
-    var b = new Point(15, 0);
-    var c = new Point(0, 15);
+    var a = new p.Point(0, 0);
+    var b = new p.Point(15, 0);
+    var c = new p.Point(0, 15);
 
     var points = helpers.findCorrectPoints(a, b, c);
 
@@ -24,8 +24,8 @@ describe("#findCorrectPoints", function() {
 
 describe("#slope", function() {
   it("should return the correct slope value when two points are given", function() {
-    var a = new Point(2, 1);
-    var b = new Point(4, 5);
+    var a = new p.Point(2, 1);
+    var b = new p.Point(4, 5);
     var expectedSlope = 2;
 
     var slope = helpers.slope(a, b);
@@ -47,13 +47,13 @@ describe("#negativeInverse", function() {
 
 describe("#midPoint", function() {
   it("should return the correct mid point when two points are given", function() {
-    var a = new Point(3, 2);
-    var b = new Point(1, 4);
-    var expectedMidpoint = new Point(2, 3);
+    var a = new p.Point(3, 2);
+    var b = new p.Point(1, 4);
+    var expectedMidpoint = new p.Point(2, 3);
 
     var midPoint = helpers.midPoint(a, b);
 
-    assert.instanceOf(midPoint, Point);
+    assert.instanceOf(midPoint, p.Point);
     assert.deepEqual(midPoint, expectedMidpoint);
   });
 });
@@ -61,22 +61,22 @@ describe("#midPoint", function() {
 describe("#getEquation", function() {
   var assertions = [
     {
-      midPoint: new Point(2, 3),
+      midPoint: new p.Point(2, 3),
       slope: -1,
       expectedEquation: new Equation(1, -1, -1)
     },
     {
-      midPoint: new Point(4, 3),
+      midPoint: new p.Point(4, 3),
       slope: 1,
       expectedEquation: new Equation(1, 1, 7)
     },
     {
-      midPoint: new Point(3, 3),
+      midPoint: new p.Point(3, 3),
       slope: 2,
       expectedEquation: new Equation(1, 2, 9)
     },
     {
-      midPoint: new Point(4, 2),
+      midPoint: new p.Point(4, 2),
       slope: 0.5,
       expectedEquation: new Equation(2, 1, 10)
     }
@@ -101,40 +101,40 @@ describe("#getEquation", function() {
 describe("#calculate", function() {
   var assertions = [
     {
-      a: new Point(2, 1),
-      b: new Point(4, 5),
-      c: new Point(6, 3),
-      expected: new Point(11 / 3, 8 / 3)
+      a: new p.Point(2, 1),
+      b: new p.Point(4, 5),
+      c: new p.Point(6, 3),
+      expected: new p.Point(11 / 3, 8 / 3)
     },
     {
-      a: new Point(3, 2),
-      b: new Point(1, 4),
-      c: new Point(5, 4),
-      expected: new Point(3, 4)
+      a: new p.Point(3, 2),
+      b: new p.Point(1, 4),
+      c: new p.Point(5, 4),
+      expected: new p.Point(3, 4)
     },
     {
-      a: new Point(65, 31),
-      b: new Point(22, 1),
-      c: new Point(98, 3),
-      expected: new Point(60.264, -8.028)
+      a: new p.Point(65, 31),
+      b: new p.Point(22, 1),
+      c: new p.Point(98, 3),
+      expected: new p.Point(60.264, -8.028)
     },
     {
-      a: new Point(-13, -13),
-      b: new Point(13, -3),
-      c: new Point(-1, -1),
-      expected: new Point(3.75, -17.75)
+      a: new p.Point(-13, -13),
+      b: new p.Point(13, -3),
+      c: new p.Point(-1, -1),
+      expected: new p.Point(3.75, -17.75)
     },
     {
-      a: new Point(0, 0),
-      b: new Point(15, 0),
-      c: new Point(7.5, 7.5),
-      expected: new Point(7.5, 0)
+      a: new p.Point(0, 0),
+      b: new p.Point(15, 0),
+      c: new p.Point(7.5, 7.5),
+      expected: new p.Point(7.5, 0)
     },
     {
-      a: new Point(0, 0),
-      b: new Point(0, 15),
-      c: new Point(15, 0),
-      expected: new Point(7.5, 7.5)
+      a: new p.Point(0, 0),
+      b: new p.Point(0, 15),
+      c: new p.Point(15, 0),
+      expected: new p.Point(7.5, 7.5)
     }
   ];
 
@@ -148,7 +148,7 @@ describe("#calculate", function() {
       it(`should return ${expected.toString()}`, function() {
         var circumcenter = calculate(a, b, c);
 
-        assert.instanceOf(circumcenter, Point);
+        assert.instanceOf(circumcenter, p.Point);
         assert.deepEqual(circumcenter, expected);
       });
     });

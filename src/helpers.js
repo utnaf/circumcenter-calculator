@@ -1,5 +1,5 @@
-var Point = require("./Point");
-var Equation = require("./Equation");
+var p = require("./Point");
+var Equation = require("./Equation").Equation;
 
 function round(number, precision) {
   var factor = Math.pow(10, precision);
@@ -30,7 +30,7 @@ function midPoint(a, b) {
   var midX = (a.x + b.x) / 2;
   var midY = (a.y + b.y) / 2;
 
-  return new Point(midX, midY);
+  return new p.Point(midX, midY);
 }
 
 function slope(a, b) {

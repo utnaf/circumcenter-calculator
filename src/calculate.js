@@ -1,9 +1,9 @@
-var Point = require("./Point").Point;
+var p = require("./Point");
 var linear = require("linear-solve");
 var helpers = require("./helpers");
 
 function calculate(a, b, c) {
-  if (!(a instanceof Point) || !(b instanceof Point) || !(c instanceof Point)) {
+  if (!(a instanceof p.Point) || !(b instanceof p.Point) || !(c instanceof p.Point)) {
     throw "Points a, b, and c must be intances of Point";
     return false;
   }
@@ -31,7 +31,7 @@ function calculate(a, b, c) {
     throw `Was impossible to calculate circumcenter for points ${a}, ${b} and ${c}`;
   }
 
-  return new Point(solved[0], solved[1]);
+  return new p.Point(solved[0], solved[1]);
 }
 
 module.exports.calculate = calculate;

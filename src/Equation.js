@@ -1,9 +1,9 @@
-var round = require("./helpers").round;
+var helpers = require("./helpers.js");
 
 function Equation(coeffX, coeffY, constant) {
-  this.x = round(coeffX, 5);
-  this.y = round(coeffY, 5);
-  this.constant = round(constant, 5);
+  this.x = helpers.round(coeffX, 5);
+  this.y = helpers.round(coeffY, 5);
+  this.constant = helpers.round(constant, 5);
 }
 
 Equation.prototype.toString = function() {

@@ -1,6 +1,6 @@
 {
   "name": "circumcenter-calculator",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Calculate the circumcenter given 3 coordinates.",
   "author": "Davide Effe <utnaf.dev@gmail.com>",
   "keywords": [
@@ -18,9 +18,7 @@
   "private": false,
   "main": "./index.js",
   "dependencies": {
-    "babel-preset-env": "^1.6.1",
-    "linear-solve": "^1.2.1",
-    "mathjs": "^4.0.0"
+    "linear-solve": "^1.2.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -30,7 +28,7 @@
     "test": "mocha"
   },
   "engines": {
-    "node": ">=6.*"
+    "node": ">=4.*"
   },
   "engineStrict": true
 }

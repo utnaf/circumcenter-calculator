@@ -26,6 +26,9 @@ console.log(cirucmcenter);
  */
 ```
 
+## Note
+I'm not a JS dev, so the code is probably shitty... if you like to review it please feel free to do so! This is more an excercise for me :) thanks!
+
 ## Contributing
 Feel free to open PR, requesting feature via [twitter](https://twitter.com/utnaf), sending and email, or opening an issue.
 

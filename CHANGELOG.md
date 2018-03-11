@@ -3,7 +3,7 @@
 ## 1.2.0
 
   * removed dependancy from MathJS
-  * allow node v0.10+
+  * allow node `>=4.*`
 
 ## 1.1.0
 

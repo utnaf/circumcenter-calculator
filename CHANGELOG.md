@@ -3,6 +3,7 @@
 ## 1.2.0
 
   * removed dependancy from MathJS
+  * allow node v0.10+
 
 ## 1.1.0
 

@@ -26,9 +26,5 @@
   },
   "scripts": {
     "test": "mocha"
-  },
-  "engines": {
-    "node": ">=4.*"
-  },
-  "engineStrict": true
+  }
 }
